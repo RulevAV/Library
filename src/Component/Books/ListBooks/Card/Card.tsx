@@ -1,6 +1,6 @@
 import React from "react";
 import "./Card.css"
-import Ration from "../../Common/Ration/Rating";
+import Ration from "../../../Common/Ration/Rating";
 interface  TodoFormProps {
     img_book : any,
     title: string,
