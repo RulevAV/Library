@@ -1,7 +1,6 @@
 import React from "react";
 import "./Card.css"
-import like from "../../../../img/like.png"
-import dislike from "../../../../img/dislike.png"
+import Ration from "../../Common/Ration/Rating";
 interface  TodoFormProps {
     img_book : any,
     title: string,
@@ -24,7 +23,7 @@ const CardBook2 : React.FC<TodoFormProps> = (props) => {
             </div>
 
 
-
+            <Ration/>
 
             <h6 className={"card-text text-right"}>{props.auctor}</h6>
 

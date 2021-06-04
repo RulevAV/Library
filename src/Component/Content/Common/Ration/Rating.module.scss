@@ -1,0 +1,26 @@
+.Rating {
+  div, p, h4 {
+    display: inline-block;
+    margin-left: 4px;
+  }
+}
+
+.svgIcon path {
+  transition: 250ms;
+  cursor: pointer;
+}
+
+.svgLike:hover path {
+  fill: #292;
+}
+
+.svgDisLike:hover path {
+  fill: #c70e0e;
+}
+
+.like{
+  color: #229922;
+}
+.dislike{
+  color: #c70e0e;
+}
