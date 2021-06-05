@@ -21,12 +21,8 @@ const CardBook2 : React.FC<TodoFormProps> = (props) => {
             <div className={"text"}>
                 <p className={"card-text text-secondary"}>{props.annotation}</p>
             </div>
-
-
             <Ration/>
-
             <h6 className={"card-text text-right"}>{props.auctor}</h6>
-
             <a href={"/"} className={"btn btn-outline-success"}>Go Anywhere</a>
         </div>
     </div>

@@ -1,30 +1,15 @@
-import Ration from "../Common/Ration/Rating";
 import React from "react";
-
+import Performance from "./Performance/Performance";
+import Posts from "./Posts/Posts";
 const Book : React.FC<any> = (props)=>{
-    return <div>
-        <div className={"card text-center"}>
-            <div className={"overflow"}>
-                <input type="image" alt="image 1"
-                       className={"card-img-top imgSize"}
-                       src={props.img_book}
-                />
-            </div>
-            <div className={"card-body text-dark"}>
-                <h4 className={"card-title"}> {'props.title'}</h4>
-                <div className={"text"}>
-                    <p className={"card-text text-secondary"}>{'props.annotation'}</p>
-                </div>
-
-
-                <Ration/>
-
-                <h6 className={"card-text text-right"}>{'props.auctor'}</h6>
-
-                <a href={"/"} className={"btn btn-outline-success"}>Go Anywhere</a>
-            </div>
-        </div>
-    </div>
+    return <>
+        <Performance img_book={null}
+                     title={"название книги"}
+                     auctor={"Автор"}
+                     annotation={"Some quick example text to build on the card title and make up the bulk of\n" +
+                     "                the card's content."}/>
+        <Posts/>
+        </>
 }
 
 export default Book;

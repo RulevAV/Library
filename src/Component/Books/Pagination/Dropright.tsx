@@ -10,9 +10,9 @@ const Dropright: React.FC<any> = (props) =>{
             <span className="sr-only">Toggle Dropright</span>
         </button>
         <ul className="dropdown-menu">
-            <li><a className="dropdown-item" href="#">отключить</a></li>
-            <li><a className="dropdown-item" href="#">по возрастанию</a></li>
-            <li><a className="dropdown-item" href="#">по убыванию</a></li>
+            <li><a className="dropdown-item" href="/">отключить</a></li>
+            <li><a className="dropdown-item" href="/">по возрастанию</a></li>
+            <li><a className="dropdown-item" href="/">по убыванию</a></li>
         </ul>
     </div>
 }
