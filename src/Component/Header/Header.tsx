@@ -47,7 +47,7 @@ const  Header:React.FC<IAuthentication> = ({AuthUser,User,LogoutUser}) => {
                 <Form inline>
                     {/* <FormControl type="text" placeholder="Search" className="mr-sm-2" />*/}
                     <span className="navbar-text text-white mr-4">
-                      {User ? User?.Login : "Не авторизованный пользователь"}
+                      {User ? User?.Login : "Не авторизованный пользователь"!}
                     </span>
                     <NavLink to={'/Login'} className={s.Brand}>
                         {!User ? <Button variant="outline-success">Войти</Button>
