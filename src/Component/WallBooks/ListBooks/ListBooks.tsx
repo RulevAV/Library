@@ -19,6 +19,7 @@ const ListBooks:React.FC<Props> = ({ListBook}) => {
                          annotation={book.annotation}
                          Genre = {book.Genre}
                          date = {book.date}
+                         owner = {book.owner}
         />;
     });
 

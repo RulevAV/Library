@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import {connect} from "react-redux";
 import { AuthUserSagaAction} from "../../redux/Auth-reducer";
 import {IAuthorization} from "../../interfaces";
@@ -6,14 +6,15 @@ import {Redirect} from "react-router";
 import Login from "./Login";
 
 
-const HOCLogin : React.FC<IAuthorization> = ({User,Authorization}) => {
+const HOCLogin : React.FC<IAuthorization> = ({User,Authorization,errorMessage}) => {
     if(User)
         return <Redirect to={""}/>
-    return <Login Authorization={Authorization} User={User}/> ;
+    return <Login Authorization={Authorization} User={User} errorMessage={errorMessage}/> ;
 }
 let mapStateToProps = (state:any) =>{
     return {
-        User:state.AuthReducer.User
+        User:state.AuthReducer.User,
+        errorMessage:state.AuthReducer.errorMessage
     }
 };
 let mapDispatchToProps = (dispatch:any)=>{

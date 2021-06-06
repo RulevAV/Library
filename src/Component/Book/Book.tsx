@@ -5,7 +5,7 @@ import { withRouter} from "react-router-dom"
 import {RouteComponentProps} from "react-router";
 import {connect} from "react-redux";
 import {GetBookSagaAction} from "../../redux/Book-reducer";
-
+import {IUser} from "../../interfaces";
 
 
 type PathParamsType = {
@@ -21,12 +21,14 @@ type IWithBook = RouteComponentProps<PathParamsType> & {
     annotation:string
     Genre:string
     date:string
+    owner:number
+    User:IUser
 }
 
-const Book : React.FC<IWithBook> = ({match,date,Genre,annotation,author,GetBookSaga,img_book,title})=>{
+const Book : React.FC<IWithBook> = ({match,date,Genre,annotation,author,GetBookSaga,img_book,title,owner,User})=>{
     useEffect(()=>{
         GetBookSaga(match.params.IdBook);
-    },[])
+    },[GetBookSaga, match.params.IdBook])
     return <>
         <Performance img_book={img_book}
                      title={title}
@@ -34,6 +36,8 @@ const Book : React.FC<IWithBook> = ({match,date,Genre,annotation,author,GetBookS
                      annotation={annotation}
                      Genre={Genre}
                      date={date}
+                     owner={owner}
+                     User={User}
         />
         <Posts/>
         </>
@@ -41,7 +45,6 @@ const Book : React.FC<IWithBook> = ({match,date,Genre,annotation,author,GetBookS
 let withBook =  withRouter(Book);
 
 let mapStateToProps = (state:any) =>{
-    console.log(state.BookReducer);
         return {
             img_book:state.BookReducer.img_book,
             title:state.BookReducer.title,
@@ -49,6 +52,8 @@ let mapStateToProps = (state:any) =>{
             annotation:state.BookReducer.annotation,
             Genre:state.BookReducer.Genre,
             date:state.BookReducer.date,
+            owner:state.BookReducer.owner,
+            User:state.AuthReducer.User
         }
 };
 let mapDispatchToProps = (dispatch:any)=>{

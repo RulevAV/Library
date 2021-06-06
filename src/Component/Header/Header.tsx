@@ -3,21 +3,21 @@ import IconBook from "../../img/AddressBook.png";
 import React, {useEffect} from "react";
 import {NavLink} from "react-router-dom";
 import s from "./Header.module.scss";
-import {AuthUserAction, LogoutUserAction} from "../../redux/Auth-reducer";
+import {AuthUserAction, ChangesErrorMassageAcion, LogoutUserAction} from "../../redux/Auth-reducer";
 import {connect} from "react-redux";
 import {IAuthentication, IUser} from "../../interfaces";
 
 
 
 
-const  Header:React.FC<IAuthentication> = ({AuthUser,User,LogoutUser}) => {
+const  Header:React.FC<IAuthentication> = ({AuthUser,User,LogoutUser,ChangesErrorMassage}) => {
 
     useEffect(()=>{
         let data = JSON.parse(localStorage.getItem('User')|| '[]') as IUser;
         if(!Array.isArray(data)) {
             AuthUser(data);
         }
-    },[])
+    },[AuthUser])
 
     return (
         <Navbar bg="dark" variant="dark" expand="lg">
@@ -50,7 +50,7 @@ const  Header:React.FC<IAuthentication> = ({AuthUser,User,LogoutUser}) => {
                       {User ? User?.Login : "Не авторизованный пользователь"!}
                     </span>
                     <NavLink to={'/Login'} className={s.Brand}>
-                        {!User ? <Button variant="outline-success">Войти</Button>
+                        {!User ? <Button onClick={()=>ChangesErrorMassage()} variant="outline-success">Войти</Button>
                             : <Button onClick={()=>{
                                 LogoutUser();
                             }} variant="outline-success">Выйти</Button>}
@@ -75,6 +75,9 @@ let mapDispatchToProps = (dispatch:any)=>{
         },
         LogoutUser:()=>{
             dispatch(LogoutUserAction());
+        },
+        ChangesErrorMassage:()=>{
+            dispatch(ChangesErrorMassageAcion(undefined));
         }
     };
 };

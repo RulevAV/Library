@@ -3,7 +3,7 @@ import {GET_BOOKS_SAGA, GetBooksAction, SetPaginationBookListAction} from "../re
 import {GetListBook, GetPagesBook, Login} from "./Emulator";
 import {IBook, IGetListBook, IUser} from "../interfaces";
 import {GET_PAGES_BOOK_SAGA, GetBookAction} from "../redux/Book-reducer";
-import {AUTH_USER_SAGA, AuthUserAction} from "../redux/Auth-reducer";
+import {AUTH_USER_SAGA,ChangesErrorMassageAcion, AuthUserAction} from "../redux/Auth-reducer";
 
 function users(currentPage:number,pageSize:number,sort:number,SortAuthor:string,SortTitle:string){
     return GetListBook(currentPage, pageSize,sort,SortAuthor,SortTitle);
@@ -35,9 +35,16 @@ export function* watchingGetBook(){
 //AUTH_USER_SAGA
 function* workerAuthUser(action:any){
     const User:IUser = yield call(Login,action.login,action.password)
-    localStorage.setItem("User", JSON.stringify(User));
+    if(User)
+    {
+        localStorage.setItem("User", JSON.stringify(User));
+        yield put(AuthUserAction(User));
+    }
+    else {
+        yield put(ChangesErrorMassageAcion("Неверно введены логин или пароль"));
+    }
 
-    yield put(AuthUserAction(User));
+
 }
 
 export function* watchingAuthUser(){

@@ -7,6 +7,7 @@ export interface IBook {
     Genre: string,
     annotation:string,
     date:string
+    owner:number
 }
 export interface IGetListBook {
     PartListBook:Array<IBook>,
@@ -20,10 +21,12 @@ export interface IUser {
 }
 export interface IAuthorization {
     Authorization: (login:string, password:string) => void,
-    User:IUser
+    User:IUser,
+    errorMessage:string
 }
 export interface IAuthentication {
     AuthUser: (User: IUser) => void
-    User:IUser
-    LogoutUser:()=>void
+    User: IUser
+    LogoutUser: () => void
+    ChangesErrorMassage: () => void
 }

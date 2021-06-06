@@ -10,7 +10,8 @@ const initialState ={
     author:"",
     Genre: "",
     annotation:"",
-    date:""
+    date:"",
+    owner:0
 }
 export const BookReducer = (state :IBook =initialState, action :any) => {
     switch (action.type) {

@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {IAuthorization} from "../../interfaces";
 
 
-const Login : React.FC<IAuthorization> = ({Authorization}) => {
+const Login : React.FC<IAuthorization> = ({Authorization,errorMessage}) => {
 
     let [stateLogin,setLogin] = useState("");
     let [statePassword,setPasword] = useState("");
@@ -24,6 +24,8 @@ const Login : React.FC<IAuthorization> = ({Authorization}) => {
             <button onClick={()=>{
                 Authorization(stateLogin,statePassword);
             }} type="button" className="btn btn-primary">Войти</button>
+            {errorMessage ? <div className={"text-danger"}>{errorMessage}</div>:null}
+            {/*<div>Неверный логин или пароль</div>*/}
         </form>
     );
 }
