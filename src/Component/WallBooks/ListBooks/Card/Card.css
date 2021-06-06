@@ -32,11 +32,22 @@
 }
 
 .text{
-    height: 5rem;
+    height: 10rem;
 }
 .like{
     width: 1rem;
 }
 .block_rating .qwe  {
     display: inline-block;
+}
+
+
+.Link {
+    color: white;
+    text-decoration: none
+}
+
+.Link:hover {
+    color: beige;
+    text-decoration: none
 }

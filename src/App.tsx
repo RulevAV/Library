@@ -2,25 +2,21 @@ import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "bootstrap/dist/js/bootstrap";
 import Header from "./Component/Header/Header";
-/*import Books from "./Component/Books/Books";*/
-import img from "./img/book2.jpg"
+import {Route} from "react-router-dom";
+import WallBooks from "./Component/WallBooks/WallBooks";
 import Book from "./Component/Book/Book";
-import Login from "./Component/Login/Login";
+import ContainerLogin from "./Component/Login/ContainerLogin";
+
 
 function App() {
   return (
     <div className="App">
       <Header/>
-      {/*<Books/>*/}
-{/*        <Book  img_book={null}
-               title={"название книги"}
-               auctor={"Автор"}
-               annotation={"Some quick example text to build on the card title and make up the bulk of\n" +
-               "                the card's content."}/>*/}
-
-        <div className={"d-flex justify-content-center"}>
-                <Login/>
-        </div>
+        <Route render={()=><WallBooks/>} exact path="/"/>
+        <Route render={()=><Book/>} exact path="/:genre/:AuthorBookTitle/:IdBook"/>
+        <Route render={()=><div className={"d-flex justify-content-center"}>
+            <ContainerLogin/>
+        </div>}exact path="/Login"/>
     </div>
   );
 }

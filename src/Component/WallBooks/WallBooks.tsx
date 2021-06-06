@@ -1,14 +1,12 @@
 import React from "react";
 import ListBooks from "./ListBooks/ListBooks";
-import Pagination from "./Pagination/Pagination";
+import HomePageHead from "./HomePageHead/HomePageHead";
 
-function WallBooks() {//d-flex justify-content-center
-
+function WallBooks() {
     return <div>
-        <Pagination/>
+        <HomePageHead/>
         <ListBooks/>
     </div>
 
 }
-
 export default WallBooks

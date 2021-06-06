@@ -1,5 +1,4 @@
 import React from "react";
-import img from "../../../../img/nullBook.jpg";
 import user from "../../../../img/user.png";
 import s from "./Post.module.scss"
 
@@ -10,7 +9,9 @@ const Post:React.FC<any> = (props) =>{
     return <div className={"container-fluid " + s.Post}>
         <div className={"row"}>
             <div className={"col-1 m-0 p-0 " + order}>
-                <img className={s.img} src={user}/>
+                <input type="image" alt="image 1"
+                       className={s.img} src={user}
+                />
             </div>
             <div className={"col-11 m-0 p-0"}>
                 <div className={order2}>
